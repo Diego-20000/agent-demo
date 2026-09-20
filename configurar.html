@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear pod — AgentPod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo" style="text-decoration:none; color:inherit;"><span class="logo-mark"></span>AgentPod</a>
+    <div class="nav-links"><span style="color:var(--text);">Crear pod</span></div>
+    <div class="mono" style="font-size:13px; color:var(--text-dim);">diego@agentpod</div>
+  </div>
+</nav>
+
+<div class="container page-main">
+  <div class="page-header">
+    <h1>Elegí el tipo y las specs de tu pod</h1>
+    <p>Precio calculado en vivo según recursos reales asignados a tu pod.</p>
+  </div>
+
+  <div class="config-layout">
+    <div>
+      <div class="type-tabs">
+        <div class="type-tab active">MCP Terminal</div>
+        <div class="type-tab">MCP Visual</div>
+      </div>
+
+      <div class="spec-list">
+        <div class="spec-row">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Básico</div>
+            <div class="spec-detail">2 vCPU · 4GB RAM · 40GB disco</div>
+          </div>
+          <div class="spec-price">$19.45/mes</div>
+        </div>
+        <div class="spec-row selected">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Estándar</div>
+            <div class="spec-detail">2 vCPU · 4GB RAM · 80GB disco</div>
+          </div>
+          <div class="spec-price">$62.31/mes</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Performance</div>
+            <div class="spec-detail">8 vCPU · 16GB RAM · 160GB disco</div>
+          </div>
+          <div class="spec-price">$50.62/mes</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Pro</div>
+            <div class="spec-detail">4 vCPU · 8GB RAM · 160GB disco</div>
+          </div>
+          <div class="spec-price">$111.66/mes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <h3>Resumen</h3>
+      <div class="summary-line"><span>Tipo</span><span>MCP Terminal</span></div>
+      <div class="summary-line"><span>Spec</span><span class="mono">Estándar</span></div>
+      <div class="summary-line"><span>Región</span><span>Europa</span></div>
+      <div class="summary-line"><span>IP pública</span><span>incluida</span></div>
+      <div class="summary-total"><span>Total</span><span>$62.31/mes</span></div>
+      <a href="facturacion.html" class="btn" style="border-color: var(--accent); color: var(--accent);">Continuar al pago</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
