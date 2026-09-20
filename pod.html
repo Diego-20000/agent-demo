@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pod-x7f2 — AgentPod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="app-nav">
+  <div class="container">
+    <a href="index.html" class="logo" style="text-decoration:none; color:inherit;"><span class="logo-mark"></span>AgentPod</a>
+    <div class="nav-links">
+      <a href="dashboard.html">Pods</a>
+      <a href="facturacion.html">Facturación</a>
+    </div>
+    <span class="mono" style="font-size:13px; color:var(--muted-light);">diego@agentpod</span>
+  </div>
+</nav>
+
+<div class="container page-main">
+  <div class="page-header">
+    <h1 class="mono" style="font-size:24px;">pod-x7f2</h1>
+    <div class="badges" style="margin-top:10px;">
+      <span class="badge running">running</span>
+      <span class="badge active">active</span>
+      <span class="badge healthy">healthy</span>
+    </div>
+    <p>MCP Terminal · Estándar · creado hace 4 días</p>
+  </div>
+
+  <div class="pod-sections">
+
+    <div class="pod-section">
+      <h3>Terminal <span class="section-hint">acceso de solo lectura/intervención manual — el agente trabaja por MCP</span></h3>
+      <div class="terminal-mock">
+        <div><span class="prompt">agentpod:~$</span> git status</div>
+        <div>On branch main</div>
+        <div>nothing to commit, working tree clean</div>
+        <div><span class="prompt">agentpod:~$</span> <span style="opacity:.4;">▊</span></div>
+      </div>
+    </div>
+
+    <div class="pod-section">
+      <h3>MCP</h3>
+      <div class="token-row">
+        <span>Endpoint</span>
+        <span class="token-value">https://pod-x7f2.agentpod.ai/mcp</span>
+      </div>
+      <div class="token-row">
+        <span>Token</span>
+        <span class="token-value">ap_sk_live_••••••••••••••••c81f</span>
+      </div>
+      <div class="token-row">
+        <span style="font-size:13px; color:var(--muted-light);">Token de API reutilizable — no expira con el uso. Si lo perdiste, rotalo (invalida el anterior al instante).</span>
+        <span style="display:flex; gap:10px;">
+          <a href="#" class="btn btn-secondary btn-sm">Copiar configuración MCP</a>
+          <a href="#" class="btn btn-secondary btn-sm">Rotar token</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="pod-section">
+      <h3>Agente / BYOK</h3>
+      <div class="info-row"><span>Agente instalado</span><span>Claude Code</span></div>
+      <div class="info-row"><span>Proveedor de IA (BYOK)</span><span>Conectado · Anthropic ••••••3f2a</span></div>
+      <div class="info-row" style="border-bottom:none;"><span>Estado de conexión</span><span style="color:#1a7f37;">activo</span></div>
+    </div>
+
+    <div class="pod-section">
+      <h3>Activity log</h3>
+      <div class="activity-row"><div>hace 2 min</div><div>MCP tool call: fs.write (main.py)</div><div class="mono">200 OK</div></div>
+      <div class="activity-row"><div>hace 6 min</div><div>MCP tool call: shell.exec (pytest)</div><div class="mono">200 OK</div></div>
+      <div class="activity-row"><div>hace 41 min</div><div>Conexión MCP desde Claude Code</div><div class="mono">200 OK</div></div>
+      <div class="activity-row"><div>ayer</div><div>Healthcheck automático</div><div class="mono">OK</div></div>
+    </div>
+
+    <div class="pod-section">
+      <h3>Resize</h3>
+      <div class="resize-grid">
+        <div class="resize-col">
+          <div class="label">Spec actual</div>
+          <div>Estándar · 2 vCPU · 4GB RAM · 80GB disco</div>
+        </div>
+        <div class="resize-col">
+          <div class="label">Precio actual</div>
+          <div>$62.31/mes</div>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--muted-light); margin-bottom:16px;">Cambiar de spec apaga el pod ~2 min. El disco solo puede crecer, nunca achicarse — bajar de spec no reduce el costo de almacenamiento ya asignado. Un upgrade cobra la diferencia ahora; un downgrade aplica en la próxima renovación.</p>
+      <a href="#" class="btn btn-secondary btn-sm">Cambiar spec</a>
+    </div>
+
+    <div class="pod-section">
+      <h3>Eliminar pod</h3>
+      <p style="font-size:13px; color:var(--muted-light); margin-bottom:16px;">Un pod nunca se borra directo: primero pasa a archivado con un snapshot de 7 días. Borrar el servidor real (lo que de verdad detiene el costo) es un paso aparte, manual, después de esa ventana.</p>
+      <a href="#" class="btn btn-danger btn-sm">Archivar pod</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -11,15 +11,14 @@
 </head>
 <body>
 
-<nav>
+<nav class="app-nav">
   <div class="container">
     <a href="index.html" class="logo" style="text-decoration:none; color:inherit;"><span class="logo-mark"></span>AgentPod</a>
     <div class="nav-links">
       <a href="dashboard.html">Pods</a>
-      <a href="facturacion.html" style="color:var(--text);">Facturación</a>
-      <a href="#">Tokens MCP</a>
+      <a href="facturacion.html" class="active-link">Facturación</a>
     </div>
-    <div class="mono" style="font-size:13px; color:var(--text-dim);">diego@agentpod</div>
+    <span class="mono" style="font-size:13px; color:var(--muted-light);">diego@agentpod</span>
   </div>
 </nav>
 
@@ -33,17 +32,17 @@
     <div>
       <h3 style="font-size:14px; margin-bottom:16px;">Historial</h3>
       <div class="pod-list-page">
-        <div class="invoice-row" style="background:var(--bg-elevated); font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-dim);">
+        <div class="invoice-row" style="background:var(--parchment); font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--muted-light);">
           <div>FACTURA</div><div>FECHA</div><div>MONTO</div><div>ESTADO</div>
         </div>
         <div class="invoice-row">
-          <div class="mono">INV-0032</div><div>1 sep 2026</div><div>$132.38</div><div style="color:var(--accent);">pagada</div>
+          <div class="mono">INV-0032</div><div>1 sep 2026</div><div>$132.38</div><div style="color:#1a7f37;">pagada</div>
         </div>
         <div class="invoice-row">
-          <div class="mono">INV-0021</div><div>1 ago 2026</div><div>$81.76</div><div style="color:var(--accent);">pagada</div>
+          <div class="mono">INV-0021</div><div>1 ago 2026</div><div>$81.76</div><div style="color:#1a7f37;">pagada</div>
         </div>
         <div class="invoice-row">
-          <div class="mono">INV-0014</div><div>1 jul 2026</div><div>$62.31</div><div style="color:var(--accent);">pagada</div>
+          <div class="mono">INV-0014</div><div>1 jul 2026</div><div>$62.31</div><div style="color:#1a7f37;">pagada</div>
         </div>
       </div>
     </div>
@@ -52,7 +51,7 @@
       <h3>Método de pago</h3>
       <div class="info-row"><span>Tarjeta</span><span>•••• 4291</span></div>
       <div class="info-row" style="border-bottom:none;"><span>Moneda</span><span>USD</span></div>
-      <a href="#" class="btn" style="width:100%; justify-content:center; margin-top:16px;">Cambiar método</a>
+      <a href="#" class="btn btn-secondary" style="width:100%; justify-content:center; margin-top:16px;">Cambiar método</a>
     </div>
   </div>
 </div>
