@@ -1,0 +1,137 @@
+:root {
+  --blue: #0066cc;
+  --blue-focus: #0071e3;
+  --white: #ffffff;
+  --parchment: #f5f5f7;
+  --pearl: #fafafc;
+  --tile-dark-1: #272729;
+  --tile-dark-2: #2a2a2c;
+  --ink: #1d1d1f;
+  --white-text: #ffffff;
+  --muted-dark: #cccccc;
+  --muted-light: #333333;
+  --disabled: #7a7a7a;
+  --divider: #f0f0f0;
+  --hairline: #e0e0e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.display { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif; }
+
+.container { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--divider);
+  padding: 14px 0;
+}
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.28px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+.logo-mark { width: 18px; height: 18px; border-radius: 5px; background: var(--blue); flex-shrink: 0; }
+.nav-links { display: flex; gap: 32px; font-size: 14px; color: var(--muted-light); }
+.nav-links a { color: inherit; text-decoration: none; }
+.nav-links a:hover { color: var(--ink); }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 400;
+  padding: 11px 22px;
+  border-radius: 9999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.btn:active { transform: scale(0.95); }
+.btn-primary { background: var(--blue); color: var(--white-text); border: none; }
+.btn-primary:hover { background: #0071e3; }
+.btn-secondary { background: transparent; color: var(--blue); border: 1px solid var(--blue); }
+.btn-utility { background: var(--ink); color: var(--white-text); font-size: 14px; padding: 8px 15px; border-radius: 8px; }
+
+/* HERO */
+header.hero { padding: 96px 0 64px; text-align: center; background: var(--white); }
+.trust-line { font-size: 14px; color: var(--disabled); margin-bottom: 20px; }
+.trust-line b { color: var(--muted-light); font-weight: 600; }
+h1.hero-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  font-size: 56px; font-weight: 600; line-height: 1.07; letter-spacing: -0.28px;
+  max-width: 780px; margin: 0 auto;
+}
+.hero-title .accent { color: var(--blue); }
+.subtitle { font-size: 21px; font-weight: 300; line-height: 1.5; color: var(--muted-light); max-width: 620px; margin: 20px auto 0; }
+.cta-row { margin-top: 32px; display: flex; gap: 12px; justify-content: center; }
+
+/* PRODUCT SHOT — the ONE shadow in the whole system */
+.product-shot {
+  margin: 64px auto 0;
+  max-width: 1100px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 3px 5px 30px 0 rgba(0,0,0,0.22);
+}
+.browser-chrome { background: var(--tile-dark-1); }
+.browser-bar { display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.browser-dots { display: flex; gap: 6px; }
+.browser-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+.browser-url { font-size: 12px; color: var(--muted-dark); background: rgba(255,255,255,0.06); border-radius: 8px; padding: 5px 14px; flex: 1; max-width: 340px; margin: 0 auto; text-align: center; }
+.app-body { display: flex; background: var(--tile-dark-1); min-height: 320px; }
+.app-sidebar { width: 170px; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.06); padding: 20px 0; }
+.app-sidebar div { padding: 10px 20px; font-size: 14px; color: var(--muted-dark); }
+.app-sidebar div.active { color: var(--white-text); font-weight: 600; }
+.app-main { flex: 1; padding: 28px 32px; text-align: left; }
+.app-main-title { font-size: 14px; font-weight: 600; color: var(--white-text); margin-bottom: 18px; }
+.pod-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; color: var(--muted-dark); }
+.pod-item:last-child { border-bottom: none; }
+.pod-id { font-weight: 600; color: var(--white-text); }
+.pod-status { font-size: 12px; padding: 4px 10px; border-radius: 9999px; }
+.pod-status.running { color: #30d158; background: rgba(48,209,88,0.12); }
+.pod-status.creating { color: #ff9f0a; background: rgba(255,159,10,0.12); }
+.pod-price { font-weight: 600; color: var(--white-text); }
+
+/* SECTIONS — alternating tiles, no borders as dividers */
+section { padding: 80px 0; }
+section.light { background: var(--white); }
+section.parchment { background: var(--parchment); }
+section.dark { background: var(--tile-dark-1); color: var(--white-text); }
+.eyebrow { font-size: 14px; font-weight: 600; letter-spacing: -0.224px; color: var(--blue); margin-bottom: 12px; text-align: center; }
+section.dark .eyebrow { color: #2997ff; }
+h2.section-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  font-size: 40px; font-weight: 600; letter-spacing: 0; line-height: 1.1;
+  text-align: center; max-width: 720px; margin: 0 auto;
+}
+.section-sub { text-align: center; font-size: 19px; font-weight: 400; color: var(--muted-light); max-width: 560px; margin: 16px auto 0; }
+section.dark .section-sub { color: var(--muted-dark); }
+
+/* Pod types — utility cards, not a plain 3-col grid */
+.pod-types { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-top: 56px; }
+.pod-card { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px; }
+.pod-card.featured { background: var(--ink); color: var(--white-text); border: none; }
+.pod-card h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; }
+.pod-card p { font-size: 17px; color: var(--muted-light); line-height: 1.47; }
+.pod-card.featured p { color: var(--muted-dark); }
+
+/* Pricing table — utility card style */
+.pricing-table { margin-top: 56px; max-width: 720px; margin-left: auto; margin-right: auto; }
+.price-row { display: grid; grid-template-columns: 100px 1fr 140px; align-items: center; padding: 18px 24px; font-size: 17px; }
+.price-row.header { font-size: 12px; font-weight: 600; color: var(--disabled); letter-spacing: -0.12px; text-transform: uppercase; }
+.price-row:not(.header) { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; margin-bottom: 10px; }
+.price-row .type { font-weight: 600; }
+.price-row .price { text-align: right; font-weight: 600; }
+
+footer { padding: 48px 0; background: var(--parchment); }
+footer .container { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--disabled); }
