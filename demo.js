@@ -3,6 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initSpecSelector();
+  initAgentSelector();
   initTerminalTypewriter();
   initUptimeCounter();
   initCopyButtons();
@@ -11,15 +12,85 @@ document.addEventListener('DOMContentLoaded', () => {
   initFakeActions();
 });
 
-// --- Checkout: leer specs elegidas desde la URL ---
+// --- Construye el href de "Continuar al checkout" con los 3 parámetros actuales ---
+function buildCheckoutLink() {
+  const link = document.querySelector('[data-checkout-link]');
+  if (!link) return;
+  const selectedSpec = document.querySelector('.spec-row.selected');
+  const selectedAgent = document.querySelector('.type-tab[data-agent].active');
+  const price = selectedSpec ? selectedSpec.getAttribute('data-price') : '30.81';
+  const type = selectedSpec ? selectedSpec.getAttribute('data-type') : 'Estándar';
+  const detail = selectedSpec ? selectedSpec.getAttribute('data-detail') : '4 vCPU · 8GB RAM · 80GB disco';
+  const agent = selectedAgent ? selectedAgent.getAttribute('data-agent') : 'Claude Code';
+  link.href = `checkout.html?price=${price}&spec=${encodeURIComponent(type)}&detail=${encodeURIComponent(detail)}&agent=${encodeURIComponent(agent)}`;
+}
+
+// --- Configurador: selector de specs con precio en vivo ---
+function initSpecSelector() {
+  const rows = document.querySelectorAll('.spec-row[data-price]');
+  if (!rows.length) return;
+  const summaryPrice = document.querySelector('[data-summary-price]');
+  const summarySpec = document.querySelector('[data-summary-spec]');
+  const summaryDetail = document.querySelector('[data-summary-detail]');
+
+  rows.forEach(row => {
+    row.addEventListener('click', () => {
+      rows.forEach(r => r.classList.remove('selected'));
+      row.classList.add('selected');
+      const price = row.getAttribute('data-price');
+      const type = row.getAttribute('data-type');
+      const detail = row.getAttribute('data-detail');
+      if (summaryPrice) summaryPrice.textContent = `$${price}/mes`;
+      if (summarySpec) summarySpec.textContent = type;
+      if (summaryDetail) summaryDetail.textContent = detail;
+      buildCheckoutLink();
+    });
+  });
+}
+
+// --- Configurador: selector de agente (Claude Code / Cursor CLI / Gemini CLI) ---
+function initAgentSelector() {
+  const tabs = document.querySelectorAll('.type-tab[data-agent]');
+  if (!tabs.length) return;
+  const summaryAgent = document.querySelector('[data-summary-agent]');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const agent = tab.getAttribute('data-agent');
+      if (summaryAgent) summaryAgent.textContent = agent;
+      buildCheckoutLink();
+    });
+  });
+}
+
+// --- Checkout / provisioning: leer specs elegidas desde la URL ---
 function initCheckoutParams() {
-  const priceEl = document.getElementById('co-price');
-  if (!priceEl) return;
   const params = new URLSearchParams(location.search);
-  const price = params.get('price'), spec = params.get('spec'), detail = params.get('detail');
-  if (price) priceEl.textContent = price;
-  if (spec) document.getElementById('co-spec').textContent = spec;
-  if (detail) document.getElementById('co-detail').textContent = detail;
+  const price = params.get('price'), spec = params.get('spec'), detail = params.get('detail'), agent = params.get('agent');
+
+  const priceEl = document.getElementById('co-price');
+  if (priceEl) {
+    if (price) priceEl.textContent = price;
+    if (spec) document.getElementById('co-spec').textContent = spec;
+    if (detail) document.getElementById('co-detail').textContent = detail;
+    if (agent) document.getElementById('co-agent').textContent = agent;
+    const continueBtn = document.getElementById('co-continue');
+    if (continueBtn) {
+      const p = price || '30.81', s = spec || 'Estándar', d = detail || '4 vCPU · 8GB RAM · 80GB disco', a = agent || 'Claude Code';
+      continueBtn.href = `provisioning.html?price=${p}&spec=${encodeURIComponent(s)}&detail=${encodeURIComponent(d)}&agent=${encodeURIComponent(a)}`;
+    }
+  }
+
+  const provSpec = document.getElementById('prov-spec');
+  if (provSpec) {
+    if (agent) document.getElementById('prov-agent').textContent = agent;
+    if (detail) provSpec.textContent = `Estándar · ${detail}`;
+    if (price) document.getElementById('prov-price').textContent = `$${price}/mes`;
+    const readyAgent = document.getElementById('ready-agent');
+    if (readyAgent && agent) readyAgent.textContent = agent;
+  }
 }
 
 // --- Botones sin backend real: dan feedback en vez de ser un link muerto ---
@@ -37,13 +108,17 @@ function initFakeActions() {
   });
 
   document.querySelectorAll('[data-fake-archive]').forEach(btn => {
+    let archived = false;
     btn.addEventListener('click', e => {
       e.preventDefault();
+      if (archived) return;
       if (!confirm('¿Archivar pod-x7f2? Queda un snapshot por 7 días — el servidor real se borra recién después, manualmente.')) return;
+      archived = true;
       document.querySelectorAll('.badge.running').forEach(b => { b.textContent = 'archiving'; b.className = 'badge archiving'; });
+      document.querySelectorAll('.badge.active').forEach(b => { b.textContent = 'restricted'; b.className = 'badge restricted'; });
       btn.textContent = 'Archivando...';
-      btn.setAttribute('disabled', 'true');
-      btn.style.opacity = '.5';
+      btn.classList.add('is-disabled');
+      btn.setAttribute('aria-disabled', 'true');
     });
   });
 
@@ -54,30 +129,6 @@ function initFakeActions() {
       const original = btn.textContent;
       btn.textContent = msg;
       setTimeout(() => { btn.textContent = original; }, 1800);
-    });
-  });
-}
-
-// --- Configurador: selector de specs con precio en vivo ---
-function initSpecSelector() {
-  const rows = document.querySelectorAll('.spec-row[data-price]');
-  if (!rows.length) return;
-  const summaryPrice = document.querySelector('[data-summary-price]');
-  const summarySpec = document.querySelector('[data-summary-spec]');
-  const summaryDetail = document.querySelector('[data-summary-detail]');
-  const checkoutLink = document.querySelector('[data-checkout-link]');
-
-  rows.forEach(row => {
-    row.addEventListener('click', () => {
-      rows.forEach(r => r.classList.remove('selected'));
-      row.classList.add('selected');
-      const price = row.getAttribute('data-price');
-      const type = row.getAttribute('data-type');
-      const detail = row.getAttribute('data-detail');
-      if (summaryPrice) summaryPrice.textContent = `$${price}/mes`;
-      if (summarySpec) summarySpec.textContent = type;
-      if (summaryDetail) summaryDetail.textContent = detail;
-      if (checkoutLink) checkoutLink.href = `checkout.html?price=${price}&spec=${encodeURIComponent(type)}&detail=${encodeURIComponent(detail)}`;
     });
   });
 }

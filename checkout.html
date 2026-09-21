@@ -27,7 +27,7 @@
 
   <div class="checkout-card">
     <div class="checkout-line"><span>Tipo</span><span>MCP Terminal</span></div>
-    <div class="checkout-line"><span>Agente</span><span>Claude Code</span></div>
+    <div class="checkout-line"><span>Agente</span><span id="co-agent">Claude Code</span></div>
     <div class="checkout-line"><span>Spec</span><span class="mono" id="co-spec">Estándar</span></div>
     <div class="checkout-line"><span>Recursos</span><span id="co-detail">4 vCPU · 8GB RAM · 80GB disco</span></div>
 
@@ -40,8 +40,8 @@
       Precio fijo de la spec elegida — no medido por uso. La suscripción se renueva mensualmente hasta que la canceles; podés cancelar futuras renovaciones en cualquier momento. El pod es un recurso persistente, no una sesión temporal: sigue existiendo (y facturando) mientras no lo archives.
     </p>
 
-    <a href="provisioning.html" class="btn btn-primary w-full">Confirmar pago →</a>
-    <p class="text-center text-xs text-dim mt-2">Procesamiento de pago seguro de terceros — no guardamos tu tarjeta.</p>
+    <a href="provisioning.html?price=30.81&spec=Est%C3%A1ndar&detail=4%20vCPU%20%C2%B7%208GB%20RAM%20%C2%B7%2080GB%20disco&agent=Claude%20Code" class="btn btn-primary w-full" id="co-continue">Simular pago →</a>
+    <p class="demo-disclosure">Demo: acá no se procesa ningún pago real — este botón solo avanza al siguiente paso simulado.</p>
   </div>
 </div>
 

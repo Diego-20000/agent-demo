@@ -34,9 +34,9 @@
 
       <p class="fine-text">Agente instalado en el pod (BYOK — usás tu propia cuenta/API key, AgentPod no revende tokens de IA):</p>
       <div class="type-tabs mb-2">
-        <div class="type-tab active">Claude Code</div>
-        <div class="type-tab">Cursor CLI</div>
-        <div class="type-tab">Gemini CLI</div>
+        <div class="type-tab active" data-agent="Claude Code">Claude Code</div>
+        <div class="type-tab" data-agent="Cursor CLI">Cursor CLI</div>
+        <div class="type-tab" data-agent="Gemini CLI">Gemini CLI</div>
       </div>
 
       <div class="spec-list">
@@ -70,11 +70,12 @@
     <div class="summary-card">
       <h3>Resumen</h3>
       <div class="summary-line"><span>Tipo</span><span>MCP Terminal</span></div>
+      <div class="summary-line"><span>Agente</span><span data-summary-agent>Claude Code</span></div>
       <div class="summary-line"><span>Spec</span><span class="mono" data-summary-spec>Estándar</span></div>
       <div class="summary-line"><span>Recursos</span><span data-summary-detail>4 vCPU · 8GB RAM · 80GB disco</span></div>
       <div class="summary-line"><span>IP pública</span><span>incluida</span></div>
       <div class="summary-total"><span>Total</span><span data-summary-price>$30.81/mes</span></div>
-      <a href="checkout.html?price=30.81&spec=Est%C3%A1ndar&detail=4%20vCPU%20%C2%B7%208GB%20RAM%20%C2%B7%2080GB%20disco" class="btn btn-primary" data-checkout-link>Continuar al checkout</a>
+      <a href="checkout.html?price=30.81&spec=Est%C3%A1ndar&detail=4%20vCPU%20%C2%B7%208GB%20RAM%20%C2%B7%2080GB%20disco&agent=Claude%20Code" class="btn btn-primary" data-checkout-link>Continuar al checkout</a>
     </div>
   </div>
 </div>

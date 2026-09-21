@@ -25,9 +25,9 @@
 
   <div class="checkout-card max-480 mb-2">
     <div class="checkout-line"><span>Tipo</span><span>MCP Terminal</span></div>
-    <div class="checkout-line"><span>Agente</span><span>Claude Code</span></div>
-    <div class="checkout-line"><span>Spec</span><span>Estándar · 4 vCPU · 8GB RAM · 80GB disco</span></div>
-    <div class="checkout-line no-border"><span>Precio</span><span>$30.81/mes · <span class="text-success">pago confirmado</span></span></div>
+    <div class="checkout-line"><span>Agente</span><span id="prov-agent">Claude Code</span></div>
+    <div class="checkout-line"><span>Spec</span><span id="prov-spec">Estándar · 4 vCPU · 8GB RAM · 80GB disco</span></div>
+    <div class="checkout-line no-border"><span>Precio</span><span id="prov-price">$30.81/mes</span> · <span class="text-success">pago confirmado</span></div>
   </div>
 
   <div class="checklist">
@@ -43,10 +43,10 @@
 
   <div data-ready-block class="ready-block">
     <h2>Tu Pod está listo.</h2>
-    <p class="ready-sub">pod-x7f2 · Estándar · Claude Code<br>Tu agente puede empezar a trabajar ahora.</p>
-    <p class="ready-fine">Tu API key de IA nunca pasa por AgentPod.</p>
+    <p class="ready-sub">pod-x7f2 · Estándar · <span id="ready-agent">Claude Code</span><br>Último paso: conectá tu propia API key de IA para que el agente empiece a trabajar.</p>
+    <p class="ready-fine">Tu API key nunca pasa por AgentPod — se configura directo en el pod.</p>
     <div class="ready-actions">
-      <a href="pod.html" class="btn btn-primary">Abrir terminal</a>
+      <a href="pod.html#byok" class="btn btn-primary">Conectar API key</a>
       <a href="pod.html#mcp" class="btn btn-secondary">Conectar cliente MCP</a>
       <a href="dashboard.html" class="btn btn-secondary">Ver dashboard</a>
     </div>
