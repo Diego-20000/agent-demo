@@ -23,19 +23,50 @@
     <p>AgentPod todavía no está disponible para entregar — esto es una reserva, no una compra.</p>
   </div>
 
+  <div class="config-layout">
+    <div>
+      <p class="fine-text">Elegí la spec que te interesa (podés ajustarla después conmigo, esto es solo para tener un número de referencia):</p>
+      <div class="spec-list mb-2">
+        <div class="spec-row" data-price="21.08" data-type="Básico" data-detail="2 vCPU · 4GB RAM · 40GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Básico</div>
+            <div class="spec-detail">2 vCPU · 4GB RAM · 40GB disco</div>
+          </div>
+          <div class="spec-price">$21.08/mes</div>
+        </div>
+        <div class="spec-row selected" data-price="30.81" data-type="Estándar" data-detail="4 vCPU · 8GB RAM · 80GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Estándar</div>
+            <div class="spec-detail">4 vCPU · 8GB RAM · 80GB disco</div>
+          </div>
+          <div class="spec-price">$30.81/mes</div>
+        </div>
+        <div class="spec-row" data-price="54.42" data-type="Performance" data-detail="8 vCPU · 16GB RAM · 160GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Performance</div>
+            <div class="spec-detail">8 vCPU · 16GB RAM · 160GB disco</div>
+          </div>
+          <div class="spec-price">$54.42/mes</div>
+        </div>
+      </div>
+    </div>
+
   <div class="checkout-card">
     <div class="checkout-line"><span>Tipo</span><span>MCP Terminal</span></div>
-    <div class="checkout-line"><span>Spec sugerida</span><span>Estándar · 4 vCPU · 8GB RAM · 80GB disco</span></div>
-    <div class="checkout-line"><span>Precio normal</span><span>$30.81/mes</span></div>
-    <div class="checkout-line no-border"><span>Precio founding (25% off, primer mes)</span><span>$23.11</span></div>
+    <div class="checkout-line"><span>Spec elegida</span><span data-reserva-spec>Estándar · 4 vCPU · 8GB RAM · 80GB disco</span></div>
+    <div class="checkout-line"><span>Precio normal</span><span data-reserva-normal>$30.81/mes</span></div>
+    <div class="checkout-line no-border"><span>Precio founding (25% off, primer mes)</span><span data-reserva-founding>$23.11</span></div>
 
     <div class="checkout-total">
-      <div class="amount">$<span>7.70</span> USD</div>
-      <div class="cadence">reserva ahora (25% de $30.81) — pagás el resto ($15.41) recién cuando se entregue el pod</div>
+      <div class="amount">$<span data-reserva-amount>7.70</span> USD</div>
+      <div class="cadence">reserva ahora (25% del precio normal) — pagás el resto (<span data-reserva-resto>$15.41</span>) recién cuando se entregue el pod</div>
     </div>
 
     <p class="checkout-fine">
-      La reserva se confirma manualmente conmigo, no automáticamente. Es reembolsable si cambiás de decisión antes de la entrega. Este es un ejemplo de precio para un pod recién reservado — no representa al pod de ejemplo del resto del demo, que ya lleva meses activo.
+      La reserva se confirma manualmente conmigo, no automáticamente, y <strong>no se cobra nada en esta página</strong>: te mando el link de pago (Mercado Pago para Argentina, o Polar para el exterior) por mail después de coordinar. Es reembolsable si cambiás de decisión antes de la entrega. Este es un ejemplo de precio — no representa al pod de ejemplo del resto del demo, que ya lleva meses activo.
     </p>
 
     <div data-fs-success class="reserva-success"></div>
@@ -50,13 +81,14 @@
       <textarea name="message" placeholder="Algo que quieras contarme (opcional): para qué vas a usar el pod, qué agente pensás correr, etc." data-fs-field rows="3"></textarea>
       <span data-fs-error="message" class="reserva-error"></span>
 
-      <input type="hidden" name="spec" value="Estándar · 4 vCPU · 8GB RAM · 80GB disco">
-      <input type="hidden" name="reserva_usd" value="7.70">
+      <input type="hidden" name="spec" id="reserva-spec-field" value="Estándar · 4 vCPU · 8GB RAM · 80GB disco">
+      <input type="hidden" name="reserva_usd" id="reserva-usd-field" value="7.70">
       <input type="hidden" name="_subject" value="Nueva reserva de AgentPod">
 
       <button type="submit" class="btn btn-primary w-full" data-fs-submit-btn>Solicitar reserva</button>
     </form>
     <p class="text-center text-xs text-dim mt-2">Al enviar, me llega tu reserva directo por mail — te contacto para confirmarla y coordinar el pago del 25%.</p>
+  </div>
   </div>
 </div>
 

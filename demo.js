@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initSpecSelector();
   initAgentSelector();
+  initReservaSelector();
   initTerminalTypewriter();
   initUptimeCounter();
   initCopyButtons();
@@ -44,6 +45,42 @@ function initSpecSelector() {
       if (summarySpec) summarySpec.textContent = type;
       if (summaryDetail) summaryDetail.textContent = detail;
       buildCheckoutLink();
+    });
+  });
+}
+
+// --- Reserva: selector de spec que recalcula reserva/founding/resto ---
+function initReservaSelector() {
+  const rows = document.querySelectorAll('[data-reserva-amount]');
+  if (!rows.length) return;
+  const specRows = document.querySelectorAll('.spec-row[data-price]');
+  if (!specRows.length) return;
+
+  function apply(row) {
+    const price = parseFloat(row.getAttribute('data-price'));
+    const type = row.getAttribute('data-type');
+    const detail = row.getAttribute('data-detail');
+    const founding = price * 0.75;
+    const reserva = price * 0.25;
+    const resto = founding - reserva;
+
+    document.querySelector('[data-reserva-spec]').textContent = `${type} · ${detail}`;
+    document.querySelector('[data-reserva-normal]').textContent = `$${price.toFixed(2)}/mes`;
+    document.querySelector('[data-reserva-founding]').textContent = `$${founding.toFixed(2)}`;
+    document.querySelector('[data-reserva-amount]').textContent = reserva.toFixed(2);
+    document.querySelector('[data-reserva-resto]').textContent = `$${resto.toFixed(2)}`;
+
+    const specField = document.getElementById('reserva-spec-field');
+    const usdField = document.getElementById('reserva-usd-field');
+    if (specField) specField.value = `${type} · ${detail}`;
+    if (usdField) usdField.value = reserva.toFixed(2);
+  }
+
+  specRows.forEach(row => {
+    row.addEventListener('click', () => {
+      specRows.forEach(r => r.classList.remove('selected'));
+      row.classList.add('selected');
+      apply(row);
     });
   });
 }
