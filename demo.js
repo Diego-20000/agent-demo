@@ -111,7 +111,7 @@ function initCategorySelector() {
   });
 }
 
-// --- Configurador: selector de agente (Claude Code / Cursor CLI / Gemini CLI) ---
+// --- Configurador: selector de agente (Claude Code / Cursor CLI / Antigravity CLI) ---
 function initAgentSelector() {
   const tabs = document.querySelectorAll('.type-tab[data-agent]');
   if (!tabs.length) return;
