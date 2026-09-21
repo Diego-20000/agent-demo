@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservar un Pod — AgentPod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo link-plain"><span class="logo-mark"></span>AgentPod</a>
+  </div>
+</nav>
+
+<div class="container page-main">
+  <div class="page-header text-center">
+    <h1>Reservá uno de los primeros Pods</h1>
+    <p>AgentPod todavía no está disponible para entregar — esto es una reserva, no una compra.</p>
+  </div>
+
+  <div class="checkout-card">
+    <div class="checkout-line"><span>Tipo</span><span>MCP Terminal</span></div>
+    <div class="checkout-line"><span>Spec sugerida</span><span>Estándar · 4 vCPU · 8GB RAM · 80GB disco</span></div>
+    <div class="checkout-line"><span>Precio normal</span><span>$30.81/mes</span></div>
+    <div class="checkout-line no-border"><span>Precio founding (25% off, primer mes)</span><span>$23.11</span></div>
+
+    <div class="checkout-total">
+      <div class="amount">$<span>7.70</span> USD</div>
+      <div class="cadence">reserva (25% del primer mes) — se descuenta del primer pago</div>
+    </div>
+
+    <p class="checkout-fine">
+      La reserva se confirma manualmente conmigo, no automáticamente. Es reembolsable si cambiás de decisión antes de la entrega. No se cobra ningún mes completo por adelantado — solo esta reserva, que separa el interés real de una decisión de compra.
+    </p>
+
+    <a href="#" class="btn btn-primary w-full" data-fake-toast="Reserva registrada — te contacto en breve ✓">Solicitar reserva</a>
+    <p class="text-center text-xs text-dim mt-2">Demo: acá no se procesa ningún pago real todavía.</p>
+  </div>
+</div>
+
+<script src="demo.js"></script>
+</body>
+</html>

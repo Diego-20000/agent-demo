@@ -24,6 +24,7 @@
 
 <div class="container page-main">
   <div class="demo-badge"><span class="dot on"></span>Demo interactivo · datos simulados</div>
+  <p class="fine-text"><a href="login.html" class="text-ink">¿Querés armar el tuyo desde cero? Recorré el configurador →</a></p>
 
   <div class="page-header">
     <h1 class="mono pod-title">pod-x7f2</h1>
@@ -32,13 +33,13 @@
       <span class="badge active">active</span>
       <span class="badge healthy">healthy</span>
     </div>
-    <p>MCP Terminal · Estándar (4 vCPU · 8GB RAM · 80GB disco) · <span data-uptime-since="2026-08-05T00:00:00Z"></span></p>
+    <p>MCP Terminal · Estándar (4 vCPU · 8GB RAM · 80GB disco) · <span data-uptime-since="2026-07-05T00:00:00Z"></span></p>
   </div>
 
   <div class="pod-sections">
 
     <div class="pod-section">
-      <h3>Terminal <span class="section-hint">acceso de solo lectura/intervención manual — el agente trabaja por MCP</span></h3>
+      <h3>Terminal <span class="section-hint">para inspección e intervención manual — el agente trabaja por MCP</span></h3>
       <div class="terminal-mock" data-typewriter='["agentpod:~$ git pull","Already up to date.","agentpod:~$ npm test","✓ 184 tests passed, 0 failed","agentpod:~$ claude","Trabajando en autenticación..."]'></div>
     </div>
 
@@ -50,7 +51,7 @@
     <span class="key">"agentpod"</span>: {
       <span class="key">"url"</span>: <span class="str">"https://pod-x7f2.agentpod.ai/mcp"</span>,
       <span class="key">"headers"</span>: {
-        <span class="key">"Authorization"</span>: <span class="str">"Bearer ap_sk_live_••••••••c81f"</span>
+        <span class="key">"Authorization"</span>: <span class="str">"Bearer ap_sk_live_••••••••<span data-token-suffix>c81f</span>"</span>
       }
     }
   }
@@ -58,7 +59,7 @@
       <button class="copy-btn" data-copy-target="#mcp-json">Copiar</button>
       <div class="token-row mt-3">
         <span class="text-sm text-muted">Token de API reutilizable — no expira con el uso. Si lo perdiste, rotalo (invalida el anterior al instante).</span>
-        <a href="#" class="btn btn-secondary btn-sm">Rotar token</a>
+        <a href="#" class="btn btn-secondary btn-sm" data-fake-rotate>Rotar token</a>
       </div>
     </div>
 
@@ -97,13 +98,13 @@
         </div>
       </div>
       <p class="fine-text">Cambiar de spec apaga el pod ~2 min. El disco solo puede crecer, nunca achicarse. Un upgrade cobra la diferencia ahora; un downgrade aplica en la próxima renovación.</p>
-      <a href="#" class="btn btn-secondary btn-sm">Cambiar spec</a>
+      <a href="configurar.html" class="btn btn-secondary btn-sm">Cambiar spec</a>
     </div>
 
     <div class="pod-section">
       <h3>Eliminar pod</h3>
       <p class="fine-text">Un pod nunca se borra directo: primero pasa a archivado con un snapshot de 7 días. Borrar el servidor real (lo que de verdad detiene el costo) es un paso aparte, manual, después de esa ventana.</p>
-      <a href="#" class="btn btn-danger btn-sm">Archivar pod</a>
+      <a href="#" class="btn btn-danger btn-sm" data-fake-archive>Archivar pod</a>
     </div>
 
   </div>

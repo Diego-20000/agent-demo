@@ -7,7 +7,56 @@ document.addEventListener('DOMContentLoaded', () => {
   initUptimeCounter();
   initCopyButtons();
   initProvisioningChecklist();
+  initCheckoutParams();
+  initFakeActions();
 });
+
+// --- Checkout: leer specs elegidas desde la URL ---
+function initCheckoutParams() {
+  const priceEl = document.getElementById('co-price');
+  if (!priceEl) return;
+  const params = new URLSearchParams(location.search);
+  const price = params.get('price'), spec = params.get('spec'), detail = params.get('detail');
+  if (price) priceEl.textContent = price;
+  if (spec) document.getElementById('co-spec').textContent = spec;
+  if (detail) document.getElementById('co-detail').textContent = detail;
+}
+
+// --- Botones sin backend real: dan feedback en vez de ser un link muerto ---
+function initFakeActions() {
+  document.querySelectorAll('[data-fake-rotate]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const suffix = Math.random().toString(16).slice(2, 6);
+      const tokenEl = document.querySelector('[data-token-suffix]');
+      if (tokenEl) tokenEl.textContent = suffix;
+      const original = btn.textContent;
+      btn.textContent = 'Token rotado ✓';
+      setTimeout(() => { btn.textContent = original; }, 1800);
+    });
+  });
+
+  document.querySelectorAll('[data-fake-archive]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      if (!confirm('¿Archivar pod-x7f2? Queda un snapshot por 7 días — el servidor real se borra recién después, manualmente.')) return;
+      document.querySelectorAll('.badge.running').forEach(b => { b.textContent = 'archiving'; b.className = 'badge archiving'; });
+      btn.textContent = 'Archivando...';
+      btn.setAttribute('disabled', 'true');
+      btn.style.opacity = '.5';
+    });
+  });
+
+  document.querySelectorAll('[data-fake-toast]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const msg = btn.getAttribute('data-fake-toast');
+      const original = btn.textContent;
+      btn.textContent = msg;
+      setTimeout(() => { btn.textContent = original; }, 1800);
+    });
+  });
+}
 
 // --- Configurador: selector de specs con precio en vivo ---
 function initSpecSelector() {
