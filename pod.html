@@ -6,7 +6,7 @@
 <title>pod-x7f2 — AgentPod</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,6 +23,8 @@
 </nav>
 
 <div class="container page-main">
+  <div class="demo-badge"><span class="dot on"></span>Demo interactivo · datos simulados</div>
+
   <div class="page-header">
     <h1 class="mono" style="font-size:24px;">pod-x7f2</h1>
     <div class="badges" style="margin-top:10px;">
@@ -30,37 +32,33 @@
       <span class="badge active">active</span>
       <span class="badge healthy">healthy</span>
     </div>
-    <p>MCP Terminal · Estándar · creado hace 4 días</p>
+    <p>MCP Terminal · Estándar (4 vCPU · 8GB RAM · 80GB disco) · <span data-uptime-since="2026-08-05T00:00:00Z"></span></p>
   </div>
 
   <div class="pod-sections">
 
     <div class="pod-section">
       <h3>Terminal <span class="section-hint">acceso de solo lectura/intervención manual — el agente trabaja por MCP</span></h3>
-      <div class="terminal-mock">
-        <div><span class="prompt">agentpod:~$</span> git status</div>
-        <div>On branch main</div>
-        <div>nothing to commit, working tree clean</div>
-        <div><span class="prompt">agentpod:~$</span> <span style="opacity:.4;">▊</span></div>
-      </div>
+      <div class="terminal-mock" data-typewriter='["agentpod:~$ git pull","Already up to date.","agentpod:~$ npm test","✓ 184 tests passed, 0 failed","agentpod:~$ claude","Trabajando en autenticación..."]'></div>
     </div>
 
-    <div class="pod-section">
+    <div class="pod-section" id="mcp">
       <h3>MCP</h3>
-      <div class="token-row">
-        <span>Endpoint</span>
-        <span class="token-value">https://pod-x7f2.agentpod.ai/mcp</span>
-      </div>
-      <div class="token-row">
-        <span>Token</span>
-        <span class="token-value">ap_sk_live_••••••••••••••••c81f</span>
-      </div>
-      <div class="token-row">
+      <p style="font-size:13.5px; color:var(--muted-light); margin-bottom:14px;">Agregalo como servidor remoto en Claude Code, Cursor o cualquier cliente MCP:</p>
+      <div class="json-block" id="mcp-json">{
+  <span class="key">"mcpServers"</span>: {
+    <span class="key">"agentpod"</span>: {
+      <span class="key">"url"</span>: <span class="str">"https://pod-x7f2.agentpod.ai/mcp"</span>,
+      <span class="key">"headers"</span>: {
+        <span class="key">"Authorization"</span>: <span class="str">"Bearer ap_sk_live_••••••••c81f"</span>
+      }
+    }
+  }
+}</div>
+      <button class="copy-btn" data-copy-target="#mcp-json">Copiar</button>
+      <div class="token-row" style="margin-top:14px;">
         <span style="font-size:13px; color:var(--muted-light);">Token de API reutilizable — no expira con el uso. Si lo perdiste, rotalo (invalida el anterior al instante).</span>
-        <span style="display:flex; gap:10px;">
-          <a href="#" class="btn btn-secondary btn-sm">Copiar configuración MCP</a>
-          <a href="#" class="btn btn-secondary btn-sm">Rotar token</a>
-        </span>
+        <a href="#" class="btn btn-secondary btn-sm">Rotar token</a>
       </div>
     </div>
 
@@ -69,6 +67,13 @@
       <div class="info-row"><span>Agente instalado</span><span>Claude Code</span></div>
       <div class="info-row"><span>Proveedor de IA (BYOK)</span><span>Conectado · Anthropic ••••••3f2a</span></div>
       <div class="info-row" style="border-bottom:none;"><span>Estado de conexión</span><span style="color:#1a7f37;">activo</span></div>
+    </div>
+
+    <div class="pod-section">
+      <h3>Agent-to-Agent <span class="section-hint">para cuando corras más de un agente en el mismo pod</span></h3>
+      <div class="info-row"><span>Endpoint</span><span style="color:#1a7f37;">● disponible</span></div>
+      <div class="info-row"><span>Agent Card</span><span class="mono" style="font-size:13px;">/.well-known/agent-card.json</span></div>
+      <div class="info-row" style="border-bottom:none;"><span>Nivel</span><span>Coordinación local del pod</span></div>
     </div>
 
     <div class="pod-section">
@@ -84,14 +89,14 @@
       <div class="resize-grid">
         <div class="resize-col">
           <div class="label">Spec actual</div>
-          <div>Estándar · 2 vCPU · 4GB RAM · 80GB disco</div>
+          <div>Estándar · 4 vCPU · 8GB RAM · 80GB disco</div>
         </div>
         <div class="resize-col">
           <div class="label">Precio actual</div>
-          <div>$62.31/mes</div>
+          <div>$30.81/mes</div>
         </div>
       </div>
-      <p style="font-size:13px; color:var(--muted-light); margin-bottom:16px;">Cambiar de spec apaga el pod ~2 min. El disco solo puede crecer, nunca achicarse — bajar de spec no reduce el costo de almacenamiento ya asignado. Un upgrade cobra la diferencia ahora; un downgrade aplica en la próxima renovación.</p>
+      <p style="font-size:13px; color:var(--muted-light); margin-bottom:16px;">Cambiar de spec apaga el pod ~2 min. El disco solo puede crecer, nunca achicarse. Un upgrade cobra la diferencia ahora; un downgrade aplica en la próxima renovación.</p>
       <a href="#" class="btn btn-secondary btn-sm">Cambiar spec</a>
     </div>
 
@@ -104,5 +109,6 @@
   </div>
 </div>
 
+<script src="demo.js"></script>
 </body>
 </html>
