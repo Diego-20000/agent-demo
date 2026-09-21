@@ -38,11 +38,33 @@
       La reserva se confirma manualmente conmigo, no automáticamente. Es reembolsable si cambiás de decisión antes de la entrega. Este es un ejemplo de precio para un pod recién reservado — no representa al pod de ejemplo del resto del demo, que ya lleva meses activo.
     </p>
 
-    <a href="#" class="btn btn-primary w-full" data-fake-toast="Reserva registrada — te contacto en breve ✓">Solicitar reserva</a>
-    <p class="text-center text-xs text-dim mt-2">Demo: acá no se procesa ningún pago real todavía.</p>
+    <div data-fs-success class="reserva-success"></div>
+
+    <form id="reserva-form" class="reserva-form">
+      <input type="text" name="name" placeholder="Tu nombre" data-fs-field required>
+      <span data-fs-error="name" class="reserva-error"></span>
+
+      <input type="email" name="email" placeholder="Tu email" data-fs-field required>
+      <span data-fs-error="email" class="reserva-error"></span>
+
+      <textarea name="message" placeholder="Algo que quieras contarme (opcional): para qué vas a usar el pod, qué agente pensás correr, etc." data-fs-field rows="3"></textarea>
+      <span data-fs-error="message" class="reserva-error"></span>
+
+      <input type="hidden" name="spec" value="Estándar · 4 vCPU · 8GB RAM · 80GB disco">
+      <input type="hidden" name="reserva_usd" value="7.70">
+      <input type="hidden" name="_subject" value="Nueva reserva de AgentPod">
+
+      <button type="submit" class="btn btn-primary w-full" data-fs-submit-btn>Solicitar reserva</button>
+    </form>
+    <p class="text-center text-xs text-dim mt-2">Al enviar, me llega tu reserva directo por mail — te contacto para confirmarla y coordinar el pago del 25%.</p>
   </div>
 </div>
 
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#reserva-form', formId: 'xaenejew' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <script src="demo.js"></script>
 </body>
 </html>
