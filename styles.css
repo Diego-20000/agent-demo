@@ -289,3 +289,40 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 
 .cursor { animation: blink 1s step-start infinite; }
 @keyframes blink { 50% { opacity: 0; } }
+
+/* ============ Utilidades (reemplazan estilos inline sueltos) ============ */
+.text-center { text-align: center; }
+.text-muted { color: var(--muted-light); }
+.text-dim { color: var(--disabled); }
+.text-sm { font-size: 13px; }
+.text-xs { font-size: 12px; }
+.text-success { color: #1a7f37; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mt-4 { margin-top: 32px; }
+.mb-2 { margin-bottom: 16px; }
+.w-full { width: 100%; justify-content: center; }
+.flex-row { display: flex; align-items: center; }
+.gap-2 { gap: 10px; }
+.gap-3 { gap: 14px; }
+.no-border { border-bottom: none; }
+.badge-inline-tag { font-size: 13px; font-weight: 500; color: var(--disabled); background: var(--parchment); padding: 3px 10px; border-radius: 9999px; vertical-align: middle; }
+.max-480 { max-width: 480px; margin: 0 auto; }
+.opacity-disabled { opacity: .5; cursor: not-allowed; }
+.fine-text { font-size: 13px; color: var(--muted-light); margin-bottom: 16px; }
+.link-plain { text-decoration: none; color: inherit; }
+.billing-layout { grid-template-columns: 1fr 320px; }
+.summary-static { position: static; }
+.invoice-header { background: var(--parchment); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--muted-light); }
+.section-label { font-size: 14px; margin-bottom: 16px; }
+.nav-cta-row { display: flex; gap: 10px; }
+.btn-nav { padding: 8px 18px; font-size: 14px; }
+.off-detail { margin-top: 18px; opacity: .6; }
+.founder-note-dark { background: rgba(255,255,255,0.06); color: inherit; }
+.ready-block { display: none; max-width: 480px; margin: 48px auto 0; text-align: center; }
+.ready-block h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+.ready-block .ready-sub { color: var(--muted-light); margin-bottom: 24px; }
+.ready-block .ready-fine { font-size: 13px; color: var(--disabled); margin-bottom: 20px; }
+.ready-actions { display: flex; gap: 10px; justify-content: center; }
+.pod-title { font-size: 24px; }
+.text-ink { color: var(--ink); }

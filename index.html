@@ -15,9 +15,9 @@
       <a href="#tipos">Tipos de pod</a>
       <a href="#precios">Precios</a>
     </div>
-    <div style="display:flex; gap:10px;">
-      <a href="pod.html" class="btn btn-secondary" style="padding:8px 18px; font-size:14px;">Ver un Pod en acción</a>
-      <a href="login.html" class="btn btn-primary" style="padding:8px 18px; font-size:14px;">Reservar un Pod</a>
+    <div class="nav-cta-row">
+      <a href="pod.html" class="btn btn-secondary btn-nav">Ver un Pod en acción</a>
+      <a href="login.html" class="btn btn-primary btn-nav">Reservar un Pod</a>
     </div>
   </div>
 </nav>
@@ -36,7 +36,7 @@
       <div class="continuity-col off">
         <div class="continuity-label"><span class="dot off"></span>TU LAPTOP</div>
         <div>desconectada</div>
-        <div style="margin-top:18px; opacity:.6;">cerraste la tapa hace 46 días</div>
+        <div class="off-detail">cerraste la tapa hace 46 días</div>
       </div>
       <div class="continuity-col on">
         <div class="continuity-label"><span class="dot on"></span>AGENTPOD · pod-x7f2</div>
@@ -56,7 +56,7 @@
         <p>El agente ejecuta shell, filesystem y git por MCP, en su propia máquina, trabajando aunque cierres tu laptop.</p>
       </div>
       <div class="pod-card">
-        <h3>MCP Visual <span style="font-size:13px; font-weight:500; color:var(--disabled); background:var(--parchment); padding:3px 10px; border-radius:9999px; vertical-align:middle;">Próximamente</span></h3>
+        <h3>MCP Visual <span class="badge-inline-tag">Próximamente</span></h3>
         <p>MCP + entorno gráfico con streaming en vivo. El agente opera una GUI real (navegador, apps de escritorio) — se construye después de validar MCP Terminal.</p>
       </div>
     </div>
@@ -127,10 +127,10 @@
 </section>
 
 <section class="dark">
-  <div class="container" style="text-align:center;">
+  <div class="container text-center">
     <div class="eyebrow">EN VALIDACIÓN</div>
     <h2 class="section-title">Lo estoy construyendo yo, no un equipo.</h2>
-    <div class="founder-note" style="background:rgba(255,255,255,0.06); color:inherit;">
+    <div class="founder-note founder-note-dark">
       <p>AgentPod todavía está en validación. Estoy buscando los primeros clientes que quieran dejar un agente trabajando 24/7 en su propio pod.</p>
       <p>Los primeros clientes reciben:</p>
       <ul>
