@@ -3,6 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initSpecSelector();
+  initCategorySelector();
   initAgentSelector();
   initReservaSelector();
   initTerminalTypewriter();
@@ -81,6 +82,31 @@ function initReservaSelector() {
       specRows.forEach(r => r.classList.remove('selected'));
       row.classList.add('selected');
       apply(row);
+    });
+  });
+}
+
+// --- Configurador: selector de familia de servidor (Estándar/Económica/Alto rendimiento/Dedicado) ---
+function initCategorySelector() {
+  const tabs = document.querySelectorAll('.type-tab[data-category]');
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const category = tab.getAttribute('data-category');
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      document.querySelectorAll('[data-category-desc]').forEach(p => {
+        p.classList.toggle('category-hidden', p.getAttribute('data-category-desc') !== category);
+      });
+      document.querySelectorAll('[data-category-list]').forEach(list => {
+        list.classList.toggle('category-hidden', list.getAttribute('data-category-list') !== category);
+      });
+
+      const activeList = document.querySelector(`[data-category-list="${category}"]`);
+      const firstRow = activeList ? activeList.querySelector('.spec-row') : null;
+      if (firstRow) firstRow.click();
     });
   });
 }

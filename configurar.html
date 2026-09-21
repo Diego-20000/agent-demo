@@ -39,7 +39,20 @@
         <div class="type-tab" data-agent="Gemini CLI">Gemini CLI</div>
       </div>
 
-      <div class="spec-list">
+      <p class="fine-text">Familia de servidor — cada una sirve para un caso distinto, no es solo "más caro = mejor":</p>
+      <div class="type-tabs mb-2">
+        <div class="type-tab active" data-category="estandar">Estándar</div>
+        <div class="type-tab" data-category="economica">Económica</div>
+        <div class="type-tab" data-category="alto-rendimiento">Alto rendimiento</div>
+        <div class="type-tab" data-category="dedicado">Dedicado</div>
+      </div>
+
+      <p class="fine-text" data-category-desc="estandar">La opción por defecto: buen balance de CPU/RAM/disco para un agente trabajando solo (shell, tests, git). Es lo que recomendamos para empezar.</p>
+      <p class="fine-text category-hidden" data-category-desc="economica">Misma idea que Estándar pero en arquitectura ARM — más barata por el mismo uso. Anda bien para MCP Terminal; si vas a correr algo muy específico compilado solo para x86, confirmá compatibilidad antes de elegirla.</p>
+      <p class="fine-text category-hidden" data-category-desc="alto-rendimiento">Más RAM por núcleo que la Estándar — pensada para varios agentes en paralelo en el mismo pod, o tareas que consumen memoria (builds grandes, test suites pesados).</p>
+      <p class="fine-text category-hidden" data-category-desc="dedicado">CPU dedicada (no compartida con otros clientes) — para cargas sostenidas de mucho cómputo. Es la más cara; no hace falta para el caso de uso típico de un agente de código.</p>
+
+      <div class="spec-list" data-category-list="estandar">
         <div class="spec-row" data-price="21.08" data-type="Básico" data-detail="2 vCPU · 4GB RAM · 40GB disco">
           <div class="spec-row-left">
             <div class="radio"></div>
@@ -63,6 +76,151 @@
             <div class="spec-detail">8 vCPU · 16GB RAM · 160GB disco</div>
           </div>
           <div class="spec-price">$54.42/mes</div>
+        </div>
+        <div class="spec-row" data-price="100.25" data-type="Pro" data-detail="16 vCPU · 32GB RAM · 320GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Pro</div>
+            <div class="spec-detail">16 vCPU · 32GB RAM · 320GB disco</div>
+          </div>
+          <div class="spec-price">$100.25/mes</div>
+        </div>
+      </div>
+
+      <div class="spec-list category-hidden" data-category-list="economica">
+        <div class="spec-row" data-price="22.47" data-type="ARM Básico" data-detail="2 vCPU (ARM) · 4GB RAM · 40GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">ARM Básico</div>
+            <div class="spec-detail">2 vCPU (ARM) · 4GB RAM · 40GB disco</div>
+          </div>
+          <div class="spec-price">$22.47/mes</div>
+        </div>
+        <div class="spec-row" data-price="37.75" data-type="ARM Estándar" data-detail="4 vCPU (ARM) · 8GB RAM · 80GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">ARM Estándar</div>
+            <div class="spec-detail">4 vCPU (ARM) · 8GB RAM · 80GB disco</div>
+          </div>
+          <div class="spec-price">$37.75/mes</div>
+        </div>
+        <div class="spec-row" data-price="72.47" data-type="ARM Performance" data-detail="8 vCPU (ARM) · 16GB RAM · 160GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">ARM Performance</div>
+            <div class="spec-detail">8 vCPU (ARM) · 16GB RAM · 160GB disco</div>
+          </div>
+          <div class="spec-price">$72.47/mes</div>
+        </div>
+        <div class="spec-row" data-price="137.75" data-type="ARM Pro" data-detail="16 vCPU (ARM) · 32GB RAM · 320GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">ARM Pro</div>
+            <div class="spec-detail">16 vCPU (ARM) · 32GB RAM · 320GB disco</div>
+          </div>
+          <div class="spec-price">$137.75/mes</div>
+        </div>
+      </div>
+
+      <div class="spec-list category-hidden" data-category-list="alto-rendimiento">
+        <div class="spec-row" data-price="40.53" data-type="HR-1" data-detail="1 vCPU · 2GB RAM · 40GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">HR-1</div>
+            <div class="spec-detail">1 vCPU · 2GB RAM · 40GB disco</div>
+          </div>
+          <div class="spec-price">$40.53/mes</div>
+        </div>
+        <div class="spec-row" data-price="66.92" data-type="HR-2" data-detail="2 vCPU · 4GB RAM · 80GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">HR-2</div>
+            <div class="spec-detail">2 vCPU · 4GB RAM · 80GB disco</div>
+          </div>
+          <div class="spec-price">$66.92/mes</div>
+        </div>
+        <div class="spec-row" data-price="119.69" data-type="HR-3" data-detail="4 vCPU · 8GB RAM · 160GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">HR-3</div>
+            <div class="spec-detail">4 vCPU · 8GB RAM · 160GB disco</div>
+          </div>
+          <div class="spec-price">$119.69/mes</div>
+        </div>
+        <div class="spec-row" data-price="230.81" data-type="HR-4" data-detail="8 vCPU · 16GB RAM · 320GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">HR-4</div>
+            <div class="spec-detail">8 vCPU · 16GB RAM · 320GB disco</div>
+          </div>
+          <div class="spec-price">$230.81/mes</div>
+        </div>
+        <div class="spec-row" data-price="333.58" data-type="HR-5" data-detail="12 vCPU · 24GB RAM · 480GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">HR-5</div>
+            <div class="spec-detail">12 vCPU · 24GB RAM · 480GB disco</div>
+          </div>
+          <div class="spec-price">$333.58/mes</div>
+        </div>
+        <div class="spec-row" data-price="428.03" data-type="HR-6" data-detail="16 vCPU · 32GB RAM · 640GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">HR-6</div>
+            <div class="spec-detail">16 vCPU · 32GB RAM · 640GB disco</div>
+          </div>
+          <div class="spec-price">$428.03/mes</div>
+        </div>
+      </div>
+
+      <div class="spec-list category-hidden" data-category-list="dedicado">
+        <div class="spec-row" data-price="64.47" data-type="Dedicado 1" data-detail="2 vCPU dedicada · 8GB RAM · 80GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Dedicado 1</div>
+            <div class="spec-detail">2 vCPU dedicada · 8GB RAM · 80GB disco</div>
+          </div>
+          <div class="spec-price">$64.47/mes</div>
+        </div>
+        <div class="spec-row" data-price="128.95" data-type="Dedicado 2" data-detail="4 vCPU dedicada · 16GB RAM · 160GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Dedicado 2</div>
+            <div class="spec-detail">4 vCPU dedicada · 16GB RAM · 160GB disco</div>
+          </div>
+          <div class="spec-price">$128.95/mes</div>
+        </div>
+        <div class="spec-row" data-price="257.89" data-type="Dedicado 3" data-detail="8 vCPU dedicada · 32GB RAM · 240GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Dedicado 3</div>
+            <div class="spec-detail">8 vCPU dedicada · 32GB RAM · 240GB disco</div>
+          </div>
+          <div class="spec-price">$257.89/mes</div>
+        </div>
+        <div class="spec-row" data-price="515.79" data-type="Dedicado 4" data-detail="16 vCPU dedicada · 64GB RAM · 360GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Dedicado 4</div>
+            <div class="spec-detail">16 vCPU dedicada · 64GB RAM · 360GB disco</div>
+          </div>
+          <div class="spec-price">$515.79/mes</div>
+        </div>
+        <div class="spec-row" data-price="1031.58" data-type="Dedicado 5" data-detail="32 vCPU dedicada · 128GB RAM · 600GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Dedicado 5</div>
+            <div class="spec-detail">32 vCPU dedicada · 128GB RAM · 600GB disco</div>
+          </div>
+          <div class="spec-price">$1031.58/mes</div>
+        </div>
+        <div class="spec-row" data-price="1547.37" data-type="Dedicado 6" data-detail="48 vCPU dedicada · 192GB RAM · 960GB disco">
+          <div class="spec-row-left">
+            <div class="radio"></div>
+            <div class="spec-type">Dedicado 6</div>
+            <div class="spec-detail">48 vCPU dedicada · 192GB RAM · 960GB disco</div>
+          </div>
+          <div class="spec-price">$1547.37/mes</div>
         </div>
       </div>
     </div>
